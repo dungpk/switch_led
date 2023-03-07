@@ -1,0 +1,66 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Swicth and lamp</title>
+</head>
+<body>
+<script>
+    let Lamp = function(name){
+        this.name = name;
+        this.status = false;
+        this.turnOn = function(){
+            if(this.status){
+                console.log("Den dang sang roi!!!")
+            }else{
+                this.status = true;
+                console.log("Den da duoc bat!!!")
+            }
+        };
+        this.turnOff = function(){
+            if(this.status){
+                this.status = false;
+                console.log("Den da duoc tat!!!")
+            }else{
+
+                console.log("Den da tat roi!!!")
+            }
+        }
+    }
+
+    let Switch =  function(){
+        this.lamp = {};
+
+        this.connectStatus = function(object){
+            this.lamp = object;
+            this.status = true
+        };
+        this.getStatus = function () {
+            if (this.status) {
+                console.log(this.lamp.name);
+                console.log(this.lamp.status);
+            }
+        };
+        this.turnOnLed = function(){
+            this.lamp.turnOn();
+            this.getStatus();
+        };
+
+        this.turnOffLed = function(){
+            this.lamp.turnOff();
+            this.getStatus();
+        };
+    }
+
+    let lamp = new Lamp("den cua hieu");
+    let switchSony = new Switch();
+    switchSony.connectStatus(lamp);
+    for(let i=0;i<10;i++){
+        switchSony.turnOnLed();
+        switchSony.turnOffLed();
+    }
+
+</script>
+</body>
+</html>
